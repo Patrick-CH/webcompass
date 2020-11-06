@@ -1,8 +1,30 @@
 from flask import Flask, redirect, abort, make_response, request, session, url_for
+from urllib.parse import urljoin, urlparse
 import os
 
 app = Flask("hello")
-app.secret_key = os.getenv('SECRET_KEY')
+app.secret_key = os.getenv('SECRET_KEY', 'secret string')
+
+
+def is_safe_url(target):
+    ref_url = urlparse(request.host_url)
+    test_url = urlparse(urljoin(request.host_url, target))
+    return test_url.scheme in ('http', 'https') and ref_url.netloc == test_url.netloc
+
+
+def redirect_back(default='hello', **kwargs):
+    """
+
+    :param default: 获取信息失败时的返回值
+    :param kwargs: 可选参数，作用同上
+    :return: 重定向到上一个界面，如过无法获取上一个界面则返回default
+    """
+    for target in request.args.get('next'), request.referrer:
+        if not target:
+            continue
+        if is_safe_url(target):
+            return redirect(target)
+    return redirect(url_for(default, **kwargs))
 
 
 @app.route('/')
@@ -27,7 +49,7 @@ def hi():
 
 @app.route('/set/<name>')
 def set_cookie(name):
-    response = make_response(redirect(request.referrer or url_for('hello')))
+    response = make_response(redirect_back())
     response.set_cookie('name', name)
     return response
 
@@ -35,14 +57,14 @@ def set_cookie(name):
 @app.route('/login')
 def login():
     session['logged_in'] = True
-    return redirect(request.referrer or url_for('hello'))
+    return redirect_back()
 
 
 @app.route('/logout')
 def logout():
     if 'logged_in' in session:
         session.pop('logged_in')
-    return redirect(request.referrer or url_for('hello'))
+    return redirect_back()
 
 
 @app.route('/admin')
