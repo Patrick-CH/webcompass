@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import qux %}
+
+{% block content %}
+{% set name='baz' %}
+<h1>Template</h1>
+<ul>
+    <li><a href="{{ url_for('login') }}">login.</a></li>
+    <li><a href="{{ url_for('register') }}">register</a></li>
+    <li><a href="{{ url_for('search') }}">search</a></li>
+</ul>
+{% endblock %}
