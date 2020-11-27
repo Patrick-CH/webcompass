@@ -20,22 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38a5a168-ccda-4b3d-b365-14db1b4dbe4f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/demos/static/avatar.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demos/static/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demos/static/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demos/templates/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demos/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demos/templates/login_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demos/templates/macros.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demos/templates/register_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demos/templates/search.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demos/templates/watchlist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/demos/.gitattributes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/demos/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webcompass.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webcompass.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demos/create_db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demos/get_trans.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demos/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demos/templates/translate.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/demos/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demos/template/watchlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/demos/Forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demos/Forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/demos/Forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demos/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/demos/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demos/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/demos/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demos/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/demos/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,8 +56,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../zyyw" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -76,20 +69,31 @@
       <recent name="C:\Users\CYK\PycharmProjects\webcompass\demos\static" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.app">
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="webcompass" />
       <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
+      <option name="PARENT_ENVS" value="false" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DATABASE_URL" value="mysql+pymysql://root:112358@localhost:3306/flask" />
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\CYK\PycharmProjects\webcompass\demos\app.py" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </EXTENSION>
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demos/app.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -98,11 +102,64 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.app" />
-      </list>
-    </recent_temporary>
+    <configuration name="create_db" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="webcompass" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DATABASE_URL" value="mysql+pymysql://root:112358@host:3306/flask" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/demos" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demos/create_db.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="get_trans" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="webcompass" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\CYK\.virtualenvs\CYK-E2aCOKzW\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/demos" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </EXTENSION>
+      <option name="SCRIPT_NAME" value="C:\Users\CYK\PycharmProjects\webcompass\demos\get_trans.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.app" />
+      <item itemvalue="Python.create_db" />
+      <item itemvalue="Python.get_trans" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -138,62 +195,70 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605769237493">
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606205088645">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1605769237493" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1606205088645" />
     <state x="522" y="213" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604810344169">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="522" y="213" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1604810344169" />
-    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1604674507368">
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1606135874369">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1604674507368" />
-    <state x="549" y="166" key="FileChooserDialogImpl" timestamp="1606054005238">
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1606135874369" />
+    <state x="626" y="159" key="EnvironmentVariablesDialog" timestamp="1606107172222">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="166" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606054005238" />
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1606102185435">
+    <state x="626" y="159" key="EnvironmentVariablesDialog/0.0.1536.824@0.0.1536.824" timestamp="1606107172222" />
+    <state x="549" y="166" key="FileChooserDialogImpl" timestamp="1606287487236">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606102185435" />
-    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1606102185435">
+    <state x="549" y="166" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606287487236" />
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1606225758020">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606102185435" />
-    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1606102185435">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606225758020" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1606225758019">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606102185435" />
-    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1606102185435">
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606225758019" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1606225758019">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606102185435" />
-    <state width="1515" height="261" key="GridCell.Tab.1.bottom" timestamp="1606102070515">
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606225758019" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1606225758020">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606102070515" />
-    <state width="1515" height="261" key="GridCell.Tab.1.center" timestamp="1606102070515">
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606225758020" />
+    <state width="1515" height="261" key="GridCell.Tab.1.bottom" timestamp="1606204691775">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1606102070515" />
-    <state width="1515" height="261" key="GridCell.Tab.1.left" timestamp="1606102070514">
+    <state width="1515" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606204691775" />
+    <state width="1515" height="261" key="GridCell.Tab.1.center" timestamp="1606204691774">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1606102070514" />
-    <state width="1515" height="261" key="GridCell.Tab.1.right" timestamp="1606102070515">
+    <state width="1515" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1606204691774" />
+    <state width="1515" height="261" key="GridCell.Tab.1.left" timestamp="1606204691774">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1606102070515" />
+    <state width="1515" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1606204691774" />
+    <state width="1515" height="261" key="GridCell.Tab.1.right" timestamp="1606204691774">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1606204691774" />
     <state x="529" y="114" key="RollbackChangesDialog" timestamp="1604387470706">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="529" y="114" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1604387470706" />
-    <state x="270" y="57" key="SettingsEditor" timestamp="1604805340339">
+    <state x="270" y="57" key="SettingsEditor" timestamp="1606104486167">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="270" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1604805340339" />
+    <state x="270" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606104486167" />
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1606135874369">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1606135874369" />
     <state x="563" y="325" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605763330269">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
