@@ -2,13 +2,15 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.header import Header
+import os
 
 
 def Send_Email(filename, receivers):
     # 第三方 SMTP 服务
     mail_host = "smtp.qq.com"  # 设置服务器
     mail_user = "1648109733@qq.com"  # 用户名
-    mail_pass =   # 口令
+    mail_pass = os.getenv('MAIL_PASS') # 口令
+    print(mail_pass)
 
     sender = '1648109733@qq.com'
 
@@ -47,4 +49,4 @@ def Send_Email(filename, receivers):
 
 
 if __name__ == '__main__':
-    Send_Email('test.txt', receivers = ['2201379031@qq.com '])
+    Send_Email('test.txt', receivers = ['2201379031@qq.com'])
