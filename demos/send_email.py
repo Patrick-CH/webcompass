@@ -8,11 +8,12 @@ import os
 def Send_Email(filename, receivers):
     # 第三方 SMTP 服务
     mail_host = "smtp.qq.com"  # 设置服务器
-    mail_user = "1648109733@qq.com"  # 用户名
+    mail_user = os.getenv('MAIL_ID')  # 用户名
     mail_pass = os.getenv('MAIL_PASS') # 口令
-    print(mail_pass)
+    # print(mail_pass)
+    # print(mail_user)
 
-    sender = '1648109733@qq.com'
+    sender = 'Web Compass'
 
     # 创建一个带附件的实例
     message = MIMEMultipart()
@@ -49,4 +50,4 @@ def Send_Email(filename, receivers):
 
 
 if __name__ == '__main__':
-    Send_Email('test.txt', receivers = ['2201379031@qq.com'])
+    Send_Email('test.txt', receivers = [])
