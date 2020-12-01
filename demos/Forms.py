@@ -32,3 +32,8 @@ class TranslateForm(FlaskForm):
     aim_language = SelectField("aiming language", validators=[DataRequired()], choices=\
     [(0, "Chinese"), (1, "English"), (2, 'French'), (3, 'German')])
     submit = SubmitField("Translate")
+
+
+class PicForm(FlaskForm):
+    content = StringField("keyword", validators=[DataRequired(), Length(1, 128)])
+    submit = SubmitField("Download")

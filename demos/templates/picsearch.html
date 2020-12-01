@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import form_field %}
+
+{% block content %}
+<h3>Search</h3>
+<form method="post">
+    {{ pic_search_form.csrf_token }}
+    {{ form_field(pic_search_form.content) }}
+    {{ pic_search_form.submit }}
+</form>
+{% endblock %}

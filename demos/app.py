@@ -2,7 +2,7 @@ from flask import Flask, redirect, abort, make_response, request, session, url_f
 from urllib.parse import urljoin, urlparse
 import os, click, pymysql, wtforms, flask_wtf
 from flask_sqlalchemy import SQLAlchemy
-from Forms import SigninForm, RegisterForm, SearchForm, TranslateForm
+from Forms import SigninForm, RegisterForm, SearchForm, TranslateForm, PicForm
 from get_trans import get_translation
 
 app = Flask(__name__)
@@ -79,6 +79,7 @@ def login():
             if user.password == password:
                 flash('%s, log in successfully.' % username)
                 session['logged_in'] = True
+                session['username'] = username
                 return redirect(url_for('index'))
             else:
                 flash('wrong password')
@@ -101,7 +102,6 @@ def register():
         newobj = User(username=username, email=email, password=password)
         db.session.add(newobj)
         db.session.commit()
-        users = User.query.all()
         flash('%s, you just submit the Register Form.' % username)
         return redirect(url_for('index'))
     return render_template('register_form.html', register_form=register_form)
@@ -142,6 +142,28 @@ def logout():
     if 'logged_in' in session:
         session.pop('logged_in')
     return redirect(url_for('index'))
+
+
+@app.route('/get_pics', methods=['GET', 'POST'])
+def get_pics():
+    if 'logged_in' in session:
+        username = session['username']
+        from models import User
+        user = User.query.filter(User.username==username).first()
+        from get_pics import get_imgs
+        pic_search_form = PicForm()
+        if pic_search_form.submit.data:
+            flash("Email will be send to you soon.")
+            content = pic_search_form.content.data
+            print("content = " + content)
+            zipfile = get_imgs(content)
+            from send_email import Send_Email
+            Send_Email(zipfile, [user.email])
+            return redirect(url_for('index'))
+        return render_template("picsearch.html", pic_search_form=pic_search_form)
+    else:
+        flash("Please log in first")
+        return redirect(url_for('login'))
 
 
 if __name__ == '__main__':
