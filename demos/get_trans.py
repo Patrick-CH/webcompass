@@ -1,34 +1,22 @@
-from selenium import webdriver
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support import wait
-from urllib.parse import quote
-from pyquery import PyQuery as pq
+import requests
+import json
+from urllib.parse import urlencode
 
 
-def get_translation(language_from, language_to, content):
-    browser = webdriver.Chrome()
-    waiter = wait.WebDriverWait(browser, 10)
-    try:
-        url = 'https://fanyi.baidu.com/?aldtype=16047#{}/{}/'.format(language_from, language_to) + quote(content)
-        browser.get(url)
-        waiter.until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, '#main-outer > div > div > div.translate-wrap > \
-            div.translateio > div.translate-main.clearfix > div.trans-right > div > div > div.output-bd > \
-            p.ordinary-output.target-output.clearfix > span'))
-        )
-        browser.close()
-        html = browser.page_source
-        doc = pq(html)
-        p = doc('#main-outer > div > div > div.translate-wrap > \
-                div.translateio > div.translate-main.clearfix > div.trans-right > div > div > div.output-bd > \
-                p.ordinary-output.target-output.clearfix > span')
-        return p.text()
-    except TimeoutException:
-        print('Time out!')
-
-
-if __name__ == '__main__':
-    text = get_translation('zh', 'en', '你好')
-    print(text)
+def GetTrans(language_from, language_to, content):
+    if language_from == 'en' and content[-1] != '.':
+        content += '.'
+    url = 'http://fy.iciba.com/ajax.php?a=fy'
+    headers = {'Accept': 'application/json, text/javascript, */*; q=0.01',
+               'X-Requested-With': 'XMLHttpRequest',
+               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                             'Chrome/87.0.4280.66 Safari/537.36',
+               'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+               }
+    body = '&f={}&t={}&w={}'.format(language_from, language_to, content)
+    body = body.encode('utf-8')
+    r = requests.post(url=url, data=body, headers=headers)
+    # print(r.text)
+    d = json.loads(r.text)
+    print(d.get('content').get('out'))
+    return d.get('content').get('out')

@@ -3,7 +3,7 @@ from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileRequired, FileAllowed
 from wtforms import StringField, PasswordField, BooleanField, IntegerField, \
     TextAreaField, SubmitField, SelectField
-from wtforms.validators import DataRequired, Length, ValidationError, Email
+from wtforms.validators import DataRequired, Length, ValidationError, Email, URL
 
 
 class SigninForm(FlaskForm):
@@ -36,4 +36,9 @@ class TranslateForm(FlaskForm):
 
 class PicForm(FlaskForm):
     content = StringField("keyword", validators=[DataRequired(), Length(1, 128)])
+    submit = SubmitField("Download")
+
+
+class VideoForm(FlaskForm):
+    url = StringField("video play url", validators=[DataRequired(), Length(1, 128), URL(require_tld=True, message=None)])
     submit = SubmitField("Download")

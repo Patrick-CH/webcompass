@@ -2,8 +2,8 @@ from flask import Flask, redirect, abort, make_response, request, session, url_f
 from urllib.parse import urljoin, urlparse
 import os, click, pymysql, wtforms, flask_wtf
 from flask_sqlalchemy import SQLAlchemy
-from Forms import SigninForm, RegisterForm, SearchForm, TranslateForm, PicForm
-from get_trans import get_translation
+from Forms import SigninForm, RegisterForm, SearchForm, TranslateForm, PicForm, VideoForm
+from get_trans import GetTrans
 
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY', 'secret string')
@@ -124,7 +124,7 @@ def translate():
     d = {
         '0': 'zh',
         '1': 'en',
-        '2': 'fra',
+        '2': 'fr',
         '3': 'de'
     }
     if translate_form.submit.data:
@@ -132,7 +132,7 @@ def translate():
         content = translate_form.content.data
         aim_language = translate_form.aim_language.data
         # [(0, "Chinese"), (1, "English"), (2, 'French'), (3, 'German')]
-        text = get_translation(d[content_language], d[aim_language], content)
+        text = GetTrans(d[content_language], d[aim_language], content)
         # return redirect(url_for('translate'))
     return render_template("translate.html", translate_form=translate_form, text=text)
 
@@ -161,6 +161,28 @@ def get_pics():
             Send_Email(zipfile, [user.email])
             return redirect(url_for('index'))
         return render_template("picsearch.html", pic_search_form=pic_search_form)
+    else:
+        flash("Please log in first")
+        return redirect(url_for('login'))
+
+
+@app.route('/get_video', methods=['GET', 'POST'])
+def get_video():
+    if 'logged_in' in session:
+        username = session['username']
+        from models import User
+        user = User.query.filter(User.username==username).first()
+        video_form = VideoForm()
+        if video_form.submit.data:
+            flash("Email will be send to you soon.")
+            url = video_form.url.data
+            print("url = " + url)
+            from get_video import download_video
+            video_file = download_video(url)
+            from send_email import Send_Email
+            Send_Email(video_file, [user.email])
+            return redirect(url_for('index'))
+        return render_template("video_download.html", video_form=video_form)
     else:
         flash("Please log in first")
         return redirect(url_for('login'))
